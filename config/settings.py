@@ -36,6 +36,9 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #local
+    'author',
+    'category',
+    'book',
 
     #third
     'rest_framework',
@@ -49,6 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+AUTH_USER_MODEL = 'author.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
