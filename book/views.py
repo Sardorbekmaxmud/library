@@ -1,4 +1,10 @@
 from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework import views,viewsets
+from rest_framework import generics,permissions
+from .models import BookModel
+from .serializer import BookSerializer
+from .permissions import *
 
 # Create your views here.
 from django.shortcuts import render
@@ -41,5 +47,6 @@ class CategoryAllBookView(views.APIView):
     def get(self,request,*args,**kwargs):
         all_book =  BookModel.objects.filter(category=kwargs['id'])
         serializer = BookSerializer(all_book,many=True)
+        return Response(serializer.data)
         return Response(serializer.data)
     permission_classes = (permissions.IsAuthenticated,)

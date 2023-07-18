@@ -9,6 +9,11 @@ from config.permissions import UserPermission
 class AuthorListCreatView(generics.ListCreateAPIView):
     queryset = AuthorModel.objects.all()
     serializer_class = AuthorSerializer
+    # permission_classes = (permissions.IsAuthenticated)
+
+class AuthorDetailUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = AuthorModel.objects.all()
+    serializer_class = AuthorSerializer
     # permission_classes = (permissions.IsAuthenticated,)
 
 class AuthorDetailView(generics.RetrieveAPIView):
