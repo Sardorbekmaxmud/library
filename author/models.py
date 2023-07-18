@@ -13,7 +13,7 @@ class CustomUser(AbstractUser):
 
 class AuthorModel(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.SET_NULL,default=None,null=True)
-    category = models.ManyToManyField('category.CategoryModel',null=True)
+    category = models.ManyToManyField('category.CategoryModel')
     f_name = models.CharField(max_length=100,default='')
     l_name = models.CharField(max_length=100,default='')
     year_of_birth = models.DateField(default=datetime.now)
