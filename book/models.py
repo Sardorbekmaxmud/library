@@ -1,25 +1,20 @@
 from django.db import models
-from author.models import AuthorModel
+from datetime import datetime
 
-
-class BookCategoryModel(models.Model):
-    name = models.CharField(max_length=65,default='')
-
-    def __str__(self) -> str:
-        return self.name
-    
-    class Meta:
-        db_table = 'book_category'
-
+# Create your models here.
 class BookModel(models.Model):
-    author = models.ForeignKey(AuthorModel,on_delete=models.CASCADE)
-    name = models.CharField(max_length=150,default='')
-    category = models.ForeignKey(BookCategoryModel,on_delete=models.SET_NULL,null=True)
-    page = models.PositiveSmallIntegerField(default=0)
-    price = models.IntegerField(default=0)
+    user = models.ForeignKey('author.CustomUser',on_delete=models.SET_NULL,default=None,null=True)
+    category = models.ForeignKey('category.CategoryModel',on_delete=models.SET_NULL,null=True)
+    author = models.ForeignKey('author.AuthorModel',on_delete=models.SET_NULL,default=None,null=True)
+    name = models.CharField(max_length=200,default='')
+    about = models.TextField(default='')
+    year = models.DateField(default=datetime.now)
+    page = models.PositiveSmallIntegerField(default=1)
+    price = models.PositiveIntegerField(default=1)
+    image = models.ImageField(upload_to="images/book")
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = 'book'
