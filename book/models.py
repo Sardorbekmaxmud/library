@@ -1,12 +1,13 @@
 from django.db import models
 from datetime import datetime
 
+
 # Create your models here.
 class BookModel(models.Model):
-    user = models.ForeignKey('author.CustomUser',on_delete=models.SET_NULL,default=None,null=True)
-    category = models.ForeignKey('category.CategoryModel',on_delete=models.SET_NULL,null=True)
-    author = models.ForeignKey('author.AuthorModel',on_delete=models.SET_NULL,default=None,null=True)
-    name = models.CharField(max_length=200,default='')
+    user = models.ForeignKey('author.CustomUser', on_delete=models.SET_NULL, default=None, null=True)
+    category = models.ForeignKey('category.CategoryModel', on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey('author.AuthorModel', on_delete=models.SET_NULL, default=None, null=True)
+    name = models.CharField(max_length=200, default='')
     about = models.TextField(default='')
     year = models.DateField(default=datetime.now)
     page = models.PositiveSmallIntegerField(default=1)

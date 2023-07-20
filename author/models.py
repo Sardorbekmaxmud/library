@@ -11,6 +11,7 @@ class CustomUser(AbstractUser):
 
     roles = models.CharField(max_length=1,choices=ROLES_CHOICES)
 
+
 class AuthorModel(models.Model):
     user = models.ForeignKey(CustomUser,on_delete=models.SET_NULL,default=None,null=True)
     category = models.ManyToManyField('category.CategoryModel')
